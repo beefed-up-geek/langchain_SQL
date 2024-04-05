@@ -85,7 +85,7 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list ):
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
-        AIMessage(content = "Hello I am your database assistant. Ask me about anything about your database."),
+        AIMessage(content = "개발단계에 있는 챗봇입니다. 아직은 영어만 가능합니다..."),
 
         ]
 
@@ -95,7 +95,7 @@ st.title("chat with MySQL")
 
 with st.sidebar:
     st.subheader("settings")
-    st.write("This is a simple chat application using MySQL. Connect to the database and start chating.")
+    st.write("MySQL과 Langchain을 연동한 간단한 앱의 데모입니다.")
 
     st.text_input("Host", value = "localhost", key = "Host")
     st.text_input("Port", value = "3306", key="Port")
@@ -103,8 +103,8 @@ with st.sidebar:
     st.text_input("Password", type="password", value = "admin", key="Password")
     st.text_input("Database", value = "Chinook", key="Database")
 
-    if st.button("Connect"):
-        with st.spinner("Connecting to database..."):
+    if st.button("연결"):
+        with st.spinner("데이터베이스 연결중..."):
             db = init_database(
                 st.session_state["User"],
                 st.session_state["Password"],
@@ -113,7 +113,7 @@ with st.sidebar:
                 st.session_state["Database"]
             )
             st.session_state.db = db
-            st.success("Connected to database!")
+            st.success("연결 성공!")
 
 for message in st.session_state.chat_history:
     if isinstance(message, AIMessage):
