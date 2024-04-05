@@ -6,7 +6,12 @@ from langchain_community.utilities import SQLDatabase
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 import streamlit as st
+import public_ip
+
 load_dotenv()
+def showpublicIp():
+    ip = public_ip.get()
+    return ip
 
 def init_database(user: str, password: str, host:str, port:str, database:str):
     db_uri = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}"
@@ -97,7 +102,7 @@ with st.sidebar:
     st.subheader("settings")
     st.write("MySQL과 Langchain을 연동한 간단한 앱의 데모입니다.")
 
-    st.text_input("Host", value = "localhost", key = "Host")
+    st.text_input("Host", value = f"{showpublicIp()}", key = "Host")
     st.text_input("Port", value = "3306", key="Port")
     st.text_input("User", value = "root", key="User")
     st.text_input("Password", type="password", value = "admin", key="Password")
