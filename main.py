@@ -89,7 +89,7 @@ if "chat_history" not in st.session_state:
 
         ]
 
-st.set_page_config(page_title="Chat with MySQL", page_icon = ":speech_balloon")
+st.set_page_config(page_title="챗봇 데모", page_icon = ":smiley:")
 st.title("chat with MySQL")
 
 
