@@ -102,7 +102,7 @@ with st.sidebar:
     st.subheader("settings")
     st.write("MySQL과 Langchain을 연동한 간단한 앱의 데모입니다.")
 
-    st.text_input("Host", value = f"{showpublicIp()}", key = "Host")
+    st.text_input("Host", value = "localhost", key = "Host")
     st.text_input("Port", value = "3306", key="Port")
     st.text_input("User", value = "root", key="User")
     st.text_input("Password", type="password", value = "admin", key="Password")
